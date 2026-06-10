@@ -1,264 +1,121 @@
+const header = document.querySelector("[data-header]");
+const progress = document.querySelector("[data-progress]");
+const navToggle = document.querySelector(".nav-toggle");
+const navLinks = document.querySelector("#site-menu");
+const backTop = document.querySelector("[data-back-top]");
+const emailButton = document.querySelector(".copy-email");
+const filterButtons = document.querySelectorAll(".filter-button");
+const projectCards = document.querySelectorAll(".project-card");
+const detailButtons = document.querySelectorAll(".details-button");
+const revealItems = document.querySelectorAll(".reveal");
+const counters = document.querySelectorAll("[data-count]");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-$(document).ready(function() {
-    // card expand/shrink func
-    $('body').on("click", function(e) {
-        const target = $(e.target);
-        if (target.hasClass("card") ||  target.parents(".card").length === 1) {
-            const el = ( target.hasClass("card") ?  target :  target.parents(".card"));
-            if (e.target.nodeName === "A") { // if a tag clicked then dont expand
-                return;
-            }
-            if (el.hasClass("expanded")) {
-                el.removeClass("expanded");
-            }
-            else {
-                el.addClass("expanded");
-            }
-        }
-        else {
-            if ($(".expanded").length === 1) {
-                $(".expanded").removeClass("expanded");
-            }       
-        }
-    });
+function updateChrome() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const progressWidth = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
 
-    $('a[href=\'#contact\']').on("click", () => {
-        $(".show").removeClass("show");
-    })
-});
-
-// load img on scroll if in view
-$(window).scroll(function() {
-    // will find unloaded gifs and load and show them, while hiding the preview img
-    $.each($('.lazy'), function() {
-        const top = $(this).parent().find("img:not(.lazy)").offset().top; // cant use unloaded image offset because its display none, so use the offset of the placeholder image
-        
-        if ( $(this).attr('data-src') && top < ($(window).scrollTop() + $(window).height() + 100) ) {
-            var source = $(this).data('src');
-
-            if ($(this).hasClass("lazy")) {
-                $(this).one("load", function() {
-                    $(this).parent().removeClass("unloaded");
-                })
-                .attr("src", source)
-                .removeAttr('data-src')
-                .each(function() {
-                    //Cache fix for browsers that don't trigger .load()
-                    if (this.complete) {
-                        $(this).trigger('load');
-                    }
-                });
-            }
-        }
-    })   
-})
-
-// download cv funcs
-function download(url, filename) {
-  fetch(url)
-    .then(response => response.blob())
-    .then(blob => {
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = filename;
-      link.click();
-  })
-  .catch(console.error);
-}
-function download_cv() {
-    download("../Rafael_Asmoucha_resume.pdf","Rafael_Asmoucha_resume.pdf");
-    document.getElementById('cv-btn').style.display = 'none';
+  header.classList.toggle("is-scrolled", scrollTop > 20);
+  backTop.classList.toggle("is-visible", scrollTop > 520);
+  progress.style.width = `${Math.min(progressWidth, 100)}%`;
 }
 
+function animateCounter(counter) {
+  if (counter.dataset.done === "true") return;
+  counter.dataset.done = "true";
 
-window.addEventListener("load", function() {
-    const tagline = document.getElementById("tagline");
-    if (!tagline) {
-        return;
+  const target = Number(counter.dataset.count);
+  if (reducedMotion) {
+    counter.textContent = target;
+    return;
+  }
+
+  const duration = 900;
+  const start = performance.now();
+
+  function tick(now) {
+    const elapsed = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - elapsed, 3);
+    counter.textContent = Math.round(target * eased);
+    if (elapsed < 1) requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("is-visible");
+    if (entry.target.matches("[data-count]")) animateCounter(entry.target);
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.16 });
+
+revealItems.forEach((item) => observer.observe(item));
+counters.forEach((counter) => observer.observe(counter));
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navLinks.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      navLinks.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
     }
+  });
+}
 
-    const taglines = [
-        tagline.textContent,
-        "Computer Science student.",
-        "Web Developer.",
-        "Software Engineer.",
-        "Math Tutor.",
-        "CS Tutor."
-    ];
-    let index = 0;
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+    filterButtons.forEach((item) => item.classList.toggle("active", item === button));
 
-    tagline.style.transition = "opacity 250ms ease";
-    tagline.style.opacity = "1";
-
-    setInterval(function() {
-        index = (index + 1) % taglines.length;
-        tagline.style.opacity = "0";
-
-        setTimeout(function() {
-            tagline.textContent = taglines[index];
-            tagline.style.opacity = "1";
-        }, 250);
-    }, 3000);
+    projectCards.forEach((card) => {
+      const shouldShow = filter === "all" || card.dataset.category === filter;
+      card.classList.toggle("is-hidden", !shouldShow);
+    });
+  });
 });
 
-window.addEventListener("load", function() {
-    const carousel = document.getElementById("art-carousel");
-    if (!carousel) {
-        return;
-    }
-
-    const stage = carousel.querySelector(".art-carousel-stage");
-    const dotsContainer = carousel.querySelector(".art-carousel-dots");
-    const prevButton = carousel.querySelector(".art-carousel-prev");
-    const nextButton = carousel.querySelector(".art-carousel-next");
-    const drawings = [
-        "image0.jpeg",
-        "image1.jpeg",
-        "image2.jpeg",
-        "image3.jpeg",
-        "image4.jpeg",
-        "image5.jpeg",
-        "image6.jpeg",
-        "image7.jpeg",
-        "image8.jpeg",
-        "image9.jpeg",
-        "image10.jpeg",
-        "image11.jpeg",
-        "image12.jpeg",
-        "image13.jpeg",
-        "image14.jpeg",
-        "image15.jpeg",
-        "image16.jpeg"
-    ];
-
-    for (let index = drawings.length - 1; index > 0; index--) {
-        const randomIndex = Math.floor(Math.random() * (index + 1));
-        const currentDrawing = drawings[index];
-
-        drawings[index] = drawings[randomIndex];
-        drawings[randomIndex] = currentDrawing;
-    }
-
-    let currentIndex = 0;
-    let pointerStartX = 0;
-    let pointerStartY = 0;
-    let isSwiping = false;
-    let autoplayTimer = 0;
-
-    drawings.forEach(function(filename, index) {
-        const item = document.createElement("figure");
-        const image = document.createElement("img");
-
-        item.className = "art-carousel-item";
-        image.src = "./images/drawings/" + filename;
-        image.alt = "Rafi digital artwork " + (index + 1);
-        image.loading = index < 3 ? "eager" : "lazy";
-        image.decoding = "async";
-
-        item.appendChild(image);
-        stage.appendChild(item);
-    });
-
-    const items = Array.from(stage.querySelectorAll(".art-carousel-item"));
-
-    drawings.forEach(function(_, index) {
-        const dot = document.createElement("button");
-
-        dot.className = "art-carousel-dot";
-        dot.type = "button";
-        dot.setAttribute("aria-label", "Show artwork " + (index + 1));
-
-        dot.addEventListener("click", function() {
-            stopAutoplay();
-            currentIndex = index;
-            renderCarousel();
-        });
-
-        dotsContainer.appendChild(dot);
-    });
-
-    const dots = Array.from(dotsContainer.querySelectorAll(".art-carousel-dot"));
-
-    function wrapIndex(index) {
-        return (index + items.length) % items.length;
-    }
-
-    function stopAutoplay() {
-        if (autoplayTimer) {
-            window.clearInterval(autoplayTimer);
-            autoplayTimer = 0;
-        }
-    }
-
-    function renderCarousel() {
-        const leftIndex = wrapIndex(currentIndex - 1);
-        const rightIndex = wrapIndex(currentIndex + 1);
-
-        items.forEach(function(item, index) {
-            item.className = "art-carousel-item";
-
-            if (index === currentIndex) {
-                item.classList.add("is-center");
-            }
-            else if (index === leftIndex) {
-                item.classList.add("is-left");
-            }
-            else if (index === rightIndex) {
-                item.classList.add("is-right");
-            }
-        });
-
-        dots.forEach(function(dot, index) {
-            const isActive = index === currentIndex;
-
-            dot.classList.toggle("is-active", isActive);
-            dot.setAttribute("aria-current", isActive ? "true" : "false");
-        });
-    }
-
-    function moveCarousel(direction) {
-        currentIndex = wrapIndex(currentIndex + direction);
-        renderCarousel();
-    }
-
-    prevButton.addEventListener("click", function() {
-        stopAutoplay();
-        moveCarousel(-1);
-    });
-
-    nextButton.addEventListener("click", function() {
-        stopAutoplay();
-        moveCarousel(1);
-    });
-
-    carousel.addEventListener("pointerdown", function(event) {
-        pointerStartX = event.clientX;
-        pointerStartY = event.clientY;
-        isSwiping = true;
-    });
-
-    carousel.addEventListener("pointerup", function(event) {
-        if (!isSwiping) {
-            return;
-        }
-
-        const deltaX = event.clientX - pointerStartX;
-        const deltaY = event.clientY - pointerStartY;
-
-        isSwiping = false;
-
-        if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
-            stopAutoplay();
-            moveCarousel(deltaX > 0 ? -1 : 1);
-        }
-    });
-
-    carousel.addEventListener("pointercancel", function() {
-        isSwiping = false;
-    });
-
-    renderCarousel();
-    autoplayTimer = window.setInterval(function() {
-        moveCarousel(1);
-    }, 3500);
+detailButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const card = button.closest(".project-card");
+    const isOpen = card.classList.toggle("is-open");
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.textContent = isOpen ? "Hide details" : "Details";
+  });
 });
+
+if (emailButton) {
+  emailButton.addEventListener("click", async () => {
+    const email = emailButton.dataset.email;
+    const originalText = "Copy email";
+
+    try {
+      await navigator.clipboard.writeText(email);
+      emailButton.textContent = "Copied";
+    } catch {
+      window.location.href = `mailto:${email}`;
+      emailButton.textContent = "Email opened";
+    }
+
+    window.setTimeout(() => {
+      emailButton.textContent = originalText;
+    }, 1800);
+  });
+}
+
+if (backTop) {
+  backTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+  });
+}
+
+window.addEventListener("scroll", updateChrome, { passive: true });
+window.addEventListener("resize", updateChrome);
+updateChrome();

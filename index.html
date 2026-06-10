@@ -1,171 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Hi I'm Rafael Asmoucha, a Computer Science student and web developer. This is my personal website showcasing my independant projects in software engineering and group experience.">
-    <title>Rafael Asmoucha</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/images/briefcase.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rafael Asmoucha | Software Engineering Portfolio</title>
+  <meta name="description" content="Rafael Asmoucha is a Computer Science student and self-taught programmer building backend systems, automation tools, real-time applications, and technical projects.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rafis.work">
+  <meta property="og:title" content="Rafael Asmoucha | Software Engineering Portfolio">
+  <meta property="og:description" content="Technical portfolio focused on backend systems, automation, real-time applications, simulators, and practical software execution.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rafis.work">
+  <meta name="theme-color" content="#070a12">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    
-    
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <h1 class='home-h1'>Hello 👋<br>I'm Rafael Asmoucha, a <span id='tagline' style='color: #6f42c1;'></span></h1>
-    
-    <div class='home-body'>
-        <h3>A little about me</h3>
+  <header class="site-header" data-header>
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Rafael Asmoucha home">rafis.work</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" id="site-menu">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="scroll-progress" data-progress aria-hidden="true"></div>
+  </header>
 
-        <p>Computer Science student with strong results in quantitative coursework, including Calculus, Linear Algebra, Discrete Math, and Data Structures.</p>
-        <p>Tutored peer students privately and through university volunteer programs while enrolled in those same courses.</p>
-        <p>Self-taught programmer from age 12, selected at age 18 for Replit Ventures, a competitive global startup incubator program, for building a software startup.</p>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img class="sketch-accent hero-sketch" src="assets/drawings/sketch_portrait_full.jpeg" alt="" aria-hidden="true" loading="eager" decoding="async">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> Open to student &amp; intern roles</p>
+          <h1 id="hero-title">I build software that turns messy problems into working systems.</h1>
+          <p class="hero-text">Computer Science student and self-taught programmer focused on backend systems, automation, real-time applications, and technical problem-solving.</p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#projects">View Projects</a>
+            <a class="button secondary" href="#contact">Contact</a>
+            <a class="button text-link" href="Rafael_Asmoucha_resume.pdf" download>Download Resume</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Abstract technical project system diagram">
+          <div class="system-card terminal-card">
+            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <pre><code>builder.focus = ["backend", "automation", "systems"]
+input = messy_workflow || live_state || abstract_model
+ship(usable_tool, clear_logic, practical_impact)</code></pre>
+          </div>
+          <div class="system-card project-node node-chess">
+            <small>Real-time Web</small>
+            <strong>Online Chess Platform</strong>
+            <span>Concurrent clients + synchronized game state</span>
+          </div>
+          <div class="system-card project-node node-lmc">
+            <small>Systems</small>
+            <strong>CPU Architecture Simulator</strong>
+            <span>Fetch-decode-execute + instruction logic</span>
+          </div>
+          <div class="system-card data-node">
+            <small>Automation/Data</small>
+            <strong>Operational workflow scripts</strong>
+            <span>Python + Apps Script pipelines</span>
+          </div>
+          <div class="architecture-lines" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="signal-strip" aria-label="Portfolio signals">
+      <div class="metric reveal">
+        <span class="metric-value" data-count="12">0</span>
+        <p>Self-taught programmer since age 12</p>
+      </div>
+      <div class="metric reveal">
+        <span class="metric-value" data-count="1">0</span><span class="metric-suffix">/6</span>
+        <p>Selected from 400+ for Replit Ventures RV0</p>
+      </div>
+      <div class="metric reveal">
+        <span class="metric-value" data-count="4">0</span><span class="metric-suffix"> project lanes</span>
+        <p>Real-time, systems, automation, startup/product</p>
+      </div>
+      <div class="metric reveal">
+        <span class="metric-value" data-count="4">0</span><span class="metric-suffix"> languages</span>
+        <p>Python, JavaScript, Java, and C</p>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects" aria-labelledby="projects-title">
+      <img class="sketch-accent projects-sketch" src="assets/drawings/sketch_plant.jpeg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="section-heading dark reveal">
+        <p class="section-kicker">Selected projects</p>
+        <h2 id="projects-title">Systems, automation, and software with technical depth.</h2>
+        <p class="section-intro">These are the clearest signals of how I think: turn unclear requirements into working software, expose the underlying system, and keep the implementation practical.</p>
+      </div>
+
+      <div class="filter-bar reveal" aria-label="Project filters">
+        <button class="filter-button active" type="button" data-filter="all">All</button>
+        <button class="filter-button" type="button" data-filter="real-time">Real-time Web</button>
+        <button class="filter-button" type="button" data-filter="systems">Systems</button>
+        <button class="filter-button" type="button" data-filter="automation">Automation/Data</button>
+        <button class="filter-button" type="button" data-filter="startup">Startup/Product</button>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card reveal featured-project" data-category="real-time">
+          <div class="project-media">
+            <img src="assets/chess.gif" alt="Preview of Rafael Asmoucha's online chess platform" loading="lazy" decoding="async">
+          </div>
+          <p class="project-category">Real-time Web Application</p>
+          <h3>Online Chess Platform</h3>
+          <p>A Python-based multiplayer chess platform built around live client interactions, server-side coordination, and synchronized game state.</p>
+          <div class="project-detail">
+            <strong>Problem</strong>
+            <span>Live chess breaks if players see different board states, stale turns, or inconsistent move history.</span>
+            <strong>Solution</strong>
+            <span>Built a server-centered multiplayer flow that coordinates connected clients and keeps each game state synchronized as moves happen.</span>
+            <strong>Technical depth</strong>
+            <ul>
+              <li>Python server logic for multiplayer sessions</li>
+              <li>Real-time client-server communication</li>
+              <li>Concurrent clients and turn coordination</li>
+              <li>Shared game-state updates across users</li>
+            </ul>
+            <strong>Engineering signal</strong>
+            <span>Shows backend thinking around concurrency, state, and communication rather than a static UI-only project.</span>
+          </div>
+          <div class="tag-list">
+            <span>Python</span><span>Real-time systems</span><span>Multiplayer</span><span>Backend</span><span>State sync</span>
+          </div>
+          <button class="details-button" type="button" aria-expanded="false">Details</button>
+        </article>
+
+        <article class="project-card reveal featured-project" data-category="systems">
+          <div class="project-media">
+            <img src="assets/lmc.gif" alt="Preview of Rafael Asmoucha's Little Man Computer simulator" loading="lazy" decoding="async">
+          </div>
+          <p class="project-category">Computer Architecture / Systems Simulator</p>
+          <h3>Little Man Computer Simulator</h3>
+          <p>A browser-based simulation of a simple CPU architecture with a custom assembly editor and instruction-level execution.</p>
+          <div class="project-detail">
+            <strong>Problem</strong>
+            <span>Computer architecture is easier to understand when the machine cycle, memory, and instruction effects are visible.</span>
+            <strong>Solution</strong>
+            <span>Implemented an interactive simulator that exposes assembly input, memory, registers, and execution behavior in one tool.</span>
+            <strong>Technical depth</strong>
+            <ul>
+              <li>JavaScript CPU model and instruction handling</li>
+              <li>Custom assembly editor with syntax highlighting</li>
+              <li>Fetch-decode-execute cycle simulation</li>
+              <li>Stateful memory, accumulator, input, and output behavior</li>
+            </ul>
+            <strong>Engineering signal</strong>
+            <span>Demonstrates low-level systems thinking, UI/state complexity, and ability to make abstract CS concepts usable.</span>
+          </div>
+          <div class="tag-list">
+            <span>JavaScript</span><span>Computer architecture</span><span>Simulator</span><span>Assembly</span><span>CPU model</span>
+          </div>
+          <div class="project-actions">
+            <button class="details-button" type="button" aria-expanded="false">Details</button>
+            <a class="project-link" href="https://lmc.rafis.work/" target="_blank" rel="noopener noreferrer">Open project</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-category="automation">
+          <div class="project-media generated-media" aria-hidden="true">
+            <div class="pipeline-preview">
+              <span>sheet_a</span><span>sheet_b</span><span>sheet_c</span>
+              <strong>merge()</strong>
+              <em>clean dataset</em>
+            </div>
+          </div>
+          <p class="project-category">Automation / Data</p>
+          <h3>Automation / Data Workflow Scripts</h3>
+          <p>Python and Google Apps Script workflow tools built during Sarona Ventures to consolidate operational data and automate repeated work.</p>
+          <div class="project-detail">
+            <strong>Problem</strong>
+            <span>Internal data lived across multiple Google Sheets edited asynchronously, making it hard to keep one reliable view.</span>
+            <strong>Solution</strong>
+            <span>Built scripts that consolidated sources into a single up-to-date dataset and supported lead generation workflows.</span>
+            <strong>Technical depth</strong>
+            <ul>
+              <li>Google Apps Script automation around Sheets workflows</li>
+              <li>Python scripts for lead generation support</li>
+              <li>Data consolidation across independently edited sources</li>
+              <li>Operational tooling for time-sensitive business work</li>
+            </ul>
+            <strong>Engineering signal</strong>
+            <span>Shows the ability to turn messy business processes into structured, repeatable pipelines.</span>
+          </div>
+          <div class="tag-list">
+            <span>Python</span><span>Apps Script</span><span>Automation</span><span>Data workflows</span><span>Google Sheets</span>
+          </div>
+          <button class="details-button" type="button" aria-expanded="false">Details</button>
+        </article>
+
+        <article class="project-card reveal" data-category="startup">
+          <div class="project-media startup-media">
+            <img src="assets/repl.email.gif" alt="Preview of Rafael Asmoucha's Replit Ventures startup project" loading="lazy" decoding="async">
+          </div>
+          <p class="project-category">Startup / Product</p>
+          <h3>Replit Ventures Startup Project</h3>
+          <p>Startup software project built during Replit Ventures RV0, focused on backend systems, product iteration, deployment, and working with experienced builders.</p>
+          <div class="project-detail">
+            <strong>Problem</strong>
+            <span>RV0 required a young team to turn an early software idea into a product direction with real technical execution.</span>
+            <strong>Solution</strong>
+            <span>Worked on Python backend systems and product surfaces while iterating with engineers and founders through the 10-week incubator.</span>
+            <strong>Technical depth</strong>
+            <ul>
+              <li>Python server-side logic</li>
+              <li>Message processing workflows</li>
+              <li>Product design iteration</li>
+              <li>Deployment and scalability discussions</li>
+            </ul>
+            <strong>Engineering signal</strong>
+            <span>Shows early initiative, startup exposure, and comfort learning from ambiguous product and technical constraints.</span>
+          </div>
+          <div class="tag-list">
+            <span>Python</span><span>Backend</span><span>Startup</span><span>Product</span><span>Deployment</span>
+          </div>
+          <button class="details-button" type="button" aria-expanded="false">Details</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Applied experience</p>
+        <h2 id="experience-title">Execution in workflows, teams, and high-pressure environments.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-card">
+            <div class="card-topline">
+              <h3>Sarona Ventures</h3>
+              <span>Investor Relations &amp; Business Analysis Internship</span>
+            </div>
+            <ul>
+              <li>Automated internal workflows with Google Apps Script and Python.</li>
+              <li>Consolidated asynchronously edited Google Sheets into a single current dataset.</li>
+              <li>Built Python scripts for lead generation during an emergency initiative supporting Israeli tech companies.</li>
+              <li>Prospected 2000+ potential limited partners while exceeding the weekly target.</li>
+            </ul>
+            <div class="tag-list" aria-label="Sarona Ventures tags">
+              <span>Python</span><span>Google Apps Script</span><span>Automation</span><span>Data cleanup</span><span>Workflow tooling</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-date">2022-2024</div>
+          <div class="timeline-card">
+            <div class="card-topline">
+              <h3>Israeli Defense Forces</h3>
+              <span>Combat Soldier, Tzanhanim</span>
+            </div>
+            <ul>
+              <li>Drafted as a lone soldier after immigrating from London.</li>
+              <li>Adapted to a new language, culture, and responsibility level under pressure.</li>
+              <li>Operated in environments requiring coordinated execution, communication, and trust.</li>
+            </ul>
+            <div class="tag-list" aria-label="IDF tags">
+              <span>Pressure</span><span>Teamwork</span><span>Adaptability</span><span>Communication</span><span>Responsibility</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-date">2021</div>
+          <div class="timeline-card">
+            <div class="card-topline">
+              <h3>Replit Ventures RV0</h3>
+              <span>Startup Founder</span>
+            </div>
+            <ul>
+              <li>Selected 1/6 from 400+ applicants for a competitive global startup incubator.</li>
+              <li>Completed a 10-week program focused on launching production-ready software.</li>
+              <li>Built backend systems in Python handling server-side logic and message processing workflows.</li>
+              <li>Worked with experienced engineers and founders on product design, scalability, and deployment.</li>
+            </ul>
+            <div class="tag-list" aria-label="Replit Ventures tags">
+              <span>Python</span><span>Backend</span><span>Startup</span><span>Product thinking</span><span>Deployment</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+      <img class="sketch-accent skills-sketch" src="assets/drawings/sketch_colored_watch.jpeg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      <div class="section-heading reveal">
+        <p class="section-kicker">Working toolkit</p>
+        <h2 id="skills-title">Practical tools for building backend logic, simulations, and automation.</h2>
+      </div>
+
+      <div class="skills-layout">
+        <div class="skill-card reveal">
+          <h3>Languages</h3>
+          <div class="chip-list"><span>Python</span><span>JavaScript</span><span>Java</span><span>C</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Backend / Web</h3>
+          <div class="chip-list"><span>Flask</span><span>Socket.IO/WebSockets concepts</span><span>HTML/CSS</span><span>SQLite concepts</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Systems / CS Concepts</h3>
+          <div class="chip-list"><span>Data Structures</span><span>Algorithms</span><span>Computer Architecture</span><span>Discrete Math</span><span>Linear Algebra</span><span>Calculus</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Automation / Data</h3>
+          <div class="chip-list"><span>Google Apps Script</span><span>Google Sheets workflows</span><span>Scripting</span><span>Data cleanup</span></div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Tools</h3>
+          <div class="chip-list"><span>Git</span><span>Deployment basics</span><span>Debugging</span><span>Product iteration</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="about-grid">
+        <div class="section-heading reveal">
+          <p class="section-kicker">About</p>
+          <h2 id="about-title">A CS student who likes making difficult systems usable.</h2>
+        </div>
+        <div class="about-copy reveal">
+          <p>I'm a CS student at Reichman University and a self-taught programmer since age 12. I like building systems that make abstract or messy problems usable: real-time web apps, simulators, backend workflows, and automation tools. I'm currently looking for student or intern roles where technical depth, fast learning, and practical execution matter.</p>
+          <div class="about-facts">
+            <span>B.Sc. Computer Science student at Reichman University, with coursework across data structures, algorithms, computer architecture, discrete mathematics, linear algebra, and calculus.</span>
+            <span>English native, Hebrew full proficiency</span>
+            <span>Herzliya, Israel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="authorship-card reveal">
+        <img class="authorship-portrait" src="assets/drawings/sketch_self_portrait.jpeg" alt="Digital sketch by Rafael Asmoucha" loading="lazy" decoding="async">
+        <p>I design, code, and illustrate my projects and this site myself. The sketches are small traces of how I think: observation, structure, and iteration.</p>
+        <img class="authorship-dog" src="assets/drawings/sketch_dog.jpeg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+      </div>
+
+      <div class="mentorship-grid compact-grid">
+        <article class="mentor-card reveal">
+          <h3>Teaching signal</h3>
+          <p>Private university tutor and first-year peer mentor for CS and math students.</p>
+        </article>
+        <article class="mentor-card reveal">
+          <h3>Volunteer support</h3>
+          <p>Supported IDF reservist students with math and programming topics during the Iron Swords War.</p>
+        </article>
+        <article class="mentor-card reveal">
+          <h3>Lone soldier mentorship</h3>
+          <p>Volunteered in a university mentorship program for IDF lone soldiers.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <img class="sketch-accent footer-sketch" src="assets/drawings/sketch_birds.jpeg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <div class="footer-grid">
+      <div>
+        <p class="section-kicker">Contact</p>
+        <h2>Available for student/intern software roles.</h2>
+        <p class="authorship-line">Designed, coded, and illustrated by Rafael Asmoucha.</p>
+      </div>
+      <div class="footer-actions">
+        <button class="button primary copy-email" type="button" data-email="rasmoucha@gmail.com">Copy email</button>
+        <a class="button secondary" href="mailto:rasmoucha@gmail.com">rasmoucha@gmail.com</a>
+        <a class="button secondary" href="https://www.linkedin.com/in/rafael-asmoucha/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="button secondary" href="Rafael_Asmoucha_resume.pdf" download>Resume</a>
+        <a class="button text-link" href="#projects">Projects</a>
+      </div>
     </div>
+  </footer>
 
-    <div class='body'>
-
-        <!-- projects section -->
-        <h3>Rafi's Work</h3>
-        
-        <div class='projects-cont'>
-            
-            <!-- analytics -->
-            <div class="card unloaded">
-                <img class='card-img-top img-fluid' src='./images/analytics-img.png' alt='preview of chess application' />
-                <img class='lazy card-img-top img-fluid' data-src='./images/analytics.gif'  alt='preview of chess application' />
-                <div class="card-body">
-                    <h5 class="card-title">Web Analytics App</h5>
-                    <p class="card-text">For my CS50x final project, I conceptualized and developed an analytics platform that allows me to efficiently gather, store, and present data from various websites, all under my domain "rafis.work." The main goal was to create an insightful analytics tool that provides valuable insights about user interactions with my websites.
-<br><br>
-Data Collection:
-I leveraged the power of SQLite3 in Python to store the collected data. The data collected from each page view includes:
--User location (determined by device timezone)
--Referrer information (to track traffic sources)
--Page pathname and domain (for identifying popular pages)
--Timestamp of the visit
--User's browser details
--Device information
-<br><br>
-Efficient Data Handling:
-Efficiency was a priority, especially as the dataset grows. To ensure efficient data handling, I utilized tactful SQL queries, taught to me by CS50, to save valuable loading time.
-<br><br>
-Security Measures:
-Security was a top concern throughout the development process. To safeguard data integrity, I implemented both front-end and back-end checks. Each "hit" sent to the server is checked for the presence of my own domain "rafis.work." This ensures that only authorized websites within my domain can use the analytics server.
-<br><br>
-User-Friendly Presentation:
-On the frontend, I harnessed the power of Jinja and Chart.js to present the data in a user-friendly manner. I created a form that enables users to select specific months or years to view data from a particular time period. To mitigate potential security risks, I've incorporated backend checks to validate user inputs.
-<br><br>
-Inspiration:
-The inspiration behind this project stems from the need for an accessible and affordable analytics solution for my personal websites. Similar services in the market come with a price tag, making them less feasible for students like myself. With my analytics app, I've created a functional alternative that caters to my analytics needs.</p>
-                    <a style='display: none;' target="_blank" class="btn btn-primary">Take a look</a>
-                    <button type="button" class="extend btn btn-light">Read more</button>
-                    <button class='shrink btn btn-light'>Click to close</button>
-                </div>
-            </div>
-
-            <!-- chess -->
-            <div class="card unloaded">
-                <img class='card-img-top img-fluid' src='./images/chess-img.jpg' alt='preview of chess application' />
-                <img class='lazy card-img-top img-fluid' data-src='./images/chess.gif' alt='preview of chess application' />
-                <div class="card-body">
-                    <h5 class="card-title">Chess Online</h5>
-                    <p class="card-text">As a web developer, I took on the challenge of creating an online chess game from scratch. The goal was to allow users to play anyone live, just like popular chess websites such as chess.com. One of the main challenges I faced was learning how to make a multiplayer game server in Python. I spent many hours researching and experimenting with different libraries and frameworks to ensure a smooth and seamless user experience. Additionally, my experience in front-end development allowed me to create a visually appealing and user-friendly interface for the game. I was able to apply my knowledge of HTML, CSS, and JavaScript to style the game and ensure it was easy to navigate for users. Overall, this project allowed me to push my limits as a web developer and strengthen my skills in both back-end and front-end development.</p>
-                    <a style='display: none;' target="_blank" class="btn btn-primary">Take a look</a>
-                    <button type="button" class="extend btn btn-light">Read more</button>
-                    <button class='shrink btn btn-light'>Click to close</button>
-                </div>
-            </div>
-
-            <!-- little man computer -->
-            <div class="card unloaded">
-                <img class='card-img-top img-fluid' src='./images/lmc-img.jpg' alt='preview of little man computer emulator' />
-                <img class='lazy card-img-top img-fluid' data-src='./images/lmc.gif' alt='preview of little man computer emulator' />
-                <div class="card-body">
-                    <h5 class="card-title">CPU Visual Emulator</h5>
-                    <p class="card-text">I took on the challenge of recreating the Little Man Computer system in a website. I developed the emulator from scratch and also created a code editor for the assembly code with syntax highlighting similar to that of a Python IDE. To make the emulator more visually engaging, I used blobs that carry numbers to illustrate the computer's operations. The inspiration for this project came from my experience in computer science class where we were taught about the Little Man Computer system using a dated website. I saw this as an opportunity to challenge myself and improve on the outdated website by creating a modern, interactive platform that others could use to learn and understand the system better.<br><br>
-    
-                    Working on the Little Man Computer project was a tremendous learning experience for me as it taught me how to work on and manage large websites. The project was significant and complex, with over 3,000 lines of JavaScript code just for the functionality alone. The sheer size of the project helped me understand the importance of breaking it down into smaller, more manageable components. I learned how to organize my code, keep track of dependencies, and troubleshoot problems that arose along the way. This project also taught me the value of time management, as it required a significant investment of time and effort to complete.</p>
-                    <a href="https://lmc.rafis.work/" target="_blank" class="btn btn-primary">Take a look</a>
-                    <button type="button" class="extend btn btn-light">Read more</button>
-                    <button class='shrink btn btn-light'>Click to close</button>
-                </div>
-            </div>
-        </div>
-
-    <div class='body'>
-        
-        <!-- projects section -->
-        <h3>Rafi's Experience In Teams</h3>
-        <div class='projects-cont'>
-            
-            <!-- replit ventures -->
-            <div class="card unloaded">
-                <img class='card-img-top img-fluid' src='./images/replit.webp' alt='repl.email/dogemail preview' />
-                <img class='lazy card-img-top img-fluid' data-src='./images/repl.email.gif' alt='repl.email/dogemail preview' />
-                <div class="card-body">
-                    <h5 class="card-title">Replit Ventures</h5>
-                    <p class="card-text">Replit ventures is an exclusive incubator program (where less than 5% of applications were accepted) providing a grant, excellent technical and business mentorship, weekly workshops with guest speakers, networking opportunities and a platform for your product to gain exposure. <br><br>
-                        
-                        As a part of a team project, I worked on developing a mail server named DogeMail (originally named repl.email) with my colleague, Marcus Weinberger. Our project was selected for <a href='https://blog.replit.com/rv0'>Replit Ventures</a>, a prestigious startup incubator program. During the program, we received valuable mentorship from experienced professionals in the industry, which helped us refine our project.<br><br>
-    
-    Our project's goal was to create an email service from scratch, aiming to enhance my skills in both front-end and back-end development. As a key contributor to the project, I took charge of designing and developing the entire front-end interface, while also assisting in certain aspects of the back-end.<br><br>
-
-For the back-end implementation, we used Python to build a robust mail server, utilizing the Flask framework to serve the HTML, CSS, and JavaScript components. As the sole front-end developer, I faced the challenge of managing the project's scale. This experience forced me to make use of industry best practices, such as ensuring code readability and maintaining a well-organized structure.<br><br>
-
-Working in collaboration with my friend Marcus Weinberger, we received invaluable experience on group work. My focus was on building an easy to use interface for the email application.<br><br>
-
-Our primary objective was to expand our knowledge and practice web development in teams. Although the project remains unfinished, I successfully conceptualized and developed a custom design for the email application. Progress was made on various components, including the homepage, inbox elements, and the compose mail page.</p>
-                    <button type="button" class="extend btn btn-light">Read more</button>
-                    <button class='shrink btn btn-light'>Click to close</button>
-                </div>
-            </div>
-
-            <!-- army -->
-            <div class="card">
-                <img class='lazy-except card-img-top img-fluid' src='./images/army.jpg' alt='Rafael Asmoucha in photo with US JTACs' />
-                <div class="card-body">
-                    <h5 class="card-title">Military Experience</h5>
-                    <p class="card-text">As an IDF paratrooper, I gained valuable experience working as part of a team in high-stress situations. Effective communication, trust, and teamwork were critical to our success. Working in such an intense and fast-paced environment taught me how to stay focused, keep calm under pressure, and rely on my teammates to achieve our goals. These skills have translated well into other areas of my life, and I am confident that my experience in the IDF has prepared me to be a strong team player in any setting.<br><br>
-                        
-                        During my service in the IDF, I had the opportunity to join the newly formed unit, Sufa. This unit operates similarly to the US Marines JTAC, providing tactical support to ground forces in combat situations. As part of my training, I was fortunate enough to spend a week with American Marines JTACs, where I learned valuable lessons in teamwork and how to work effectively with foreign allies in times of war. This experience not only taught me important military tactics and techniques but also gave me a broader understanding of how different units can work together to achieve a common goal. I am proud to have been a part of this unit and have gained skills and knowledge that I believe will be valuable in any team setting.</p>
-                    <button type="button" class="extend btn btn-light">Read more</button>
-                    <button class='shrink btn btn-light'>Click to close</button>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-
-    <div class='body'>
-        <!-- digital art section -->
-        <h3>Rafi's Digital Art</h3>
-        <div class="art-carousel" id="art-carousel" aria-label="Digital art gallery">
-            <button class="art-carousel-btn art-carousel-prev" type="button" aria-label="Previous artwork">&lsaquo;</button>
-            <div class="art-carousel-stage" aria-live="polite"></div>
-            <button class="art-carousel-btn art-carousel-next" type="button" aria-label="Next artwork">&rsaquo;</button>
-            <div class="art-carousel-dots" aria-label="Choose artwork"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="contact" class="text-center text-lg-start text-muted">
-        <div class="text-center p-4">
-            <h4>Get in touch</h4>
-            <i class="fa-solid fa-square-envelope fa-xl"></i>
-            <p>
-                <a href="mailto:rasmoucha@gmail.com">rasmoucha@gmail.com</a><br>
-                <a href='https://www.linkedin.com/in/rafael-asmoucha-22a6121b2/'>LinkedIn</a><br>
-                <a href="./Rafael_Asmoucha_resume.pdf" target="_blank">See Resume</a>
-            </p>
-        </div>
-    </footer>
+  <button class="back-to-top" type="button" data-back-top aria-label="Back to top">Top</button>
+  <script src="script.js"></script>
 </body>
-
 </html>
